@@ -112,7 +112,7 @@ export default function Home() {
 
   return (
     <div
-      className={`h-[calc(100vh-64px)] bg-gray-100 flex flex-col items-center ${
+      className={`h-[calc(100vh-80px)] bg-gray-100 flex flex-col items-center ${
         activeJenisIndex === null ? "justify-center" : ""
       } p-8`}
       style={{

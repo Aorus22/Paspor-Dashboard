@@ -5,3 +5,10 @@
 body {
   @apply overflow-x-hidden;
 }
+
+:root {
+  --toastify-color-dark: #1f2937;
+  --toastify-color-success: #49bc4d;
+  --toastify-color-warning: #b7a047;
+  --toastify-color-error: #c05e55;
+}

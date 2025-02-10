@@ -5,6 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { useState, useEffect, useContext, useRef } from "react";
 import { UserContext } from "@/context/UserContext";
 import { menu } from "@/constants/menu";
+import NProgress from "nprogress";
 import { FaAddressBook, FaHome } from "react-icons/fa";
 
 const MenuItem = ({ item, isActive, openMenu, setOpenMenu }) => {
@@ -108,6 +109,7 @@ const Sidebar = () => {
   const handleLogout = async () => {
     await fetch("/api/logout", { method: "POST" });
     setUser(null);
+    NProgress.start();
     router.push("/login");
   };
 

@@ -13,6 +13,7 @@ import {
   Legend,
 } from 'chart.js';
 import { getFullMenuName } from '@/constants/menu';
+import { toast } from 'react-toastify';
 
 ChartJS.register(
   CategoryScale,
@@ -44,7 +45,6 @@ const InputAndGraph = ({ data_name }) => {
   const [data, setData] = useState({});
   const [selectedMonth, setSelectedMonth] = useState(months[0]);
   const [inputValue, setInputValue] = useState('');
-  const [error, setError] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -90,7 +90,7 @@ const InputAndGraph = ({ data_name }) => {
     const numericValue = Number(inputValue);
 
     if (!Number.isInteger(numericValue) || numericValue < 0) {
-      setError('Please enter a valid non-negative integer.');
+        toast.warning('Input Negatif Tidak Valid');
       return;
     }
 
@@ -103,21 +103,18 @@ const InputAndGraph = ({ data_name }) => {
         body: JSON.stringify({ month: selectedMonth, total: numericValue }),
       });
 
-      const result = await res.json();
-
       if (res.ok) {
         setData({
           ...data,
           [selectedMonth]: numericValue,
         });
         setInputValue('');
-        setError('');
+        toast.success("Data Berhasil Diperbarui")
       } else {
-        setError(result.message || 'Failed to update data.');
+        toast.error("Data Gagal Diperbarui")
       }
     } catch (err) {
-      console.error('Error updating data:', err);
-      setError('Failed to update data.');
+      toast.error("Data Gagal Diperbarui")
     }
   };
 
@@ -206,7 +203,7 @@ const InputAndGraph = ({ data_name }) => {
   }
 
   return (
-    <div className='p-6'>
+    <div className='p-10'>
       {user.role === "ADMIN" && (
         <div>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-4">
@@ -253,12 +250,6 @@ const InputAndGraph = ({ data_name }) => {
               Update
             </button>
           </div>
-        </div>
-      )}
-
-      {error && (
-        <div className="text-red-500 text-sm mb-4">
-          {error}
         </div>
       )}
 

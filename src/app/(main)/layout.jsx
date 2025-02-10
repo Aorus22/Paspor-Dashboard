@@ -1,6 +1,7 @@
 "use client";
 
 import Header from "@/components/Header";
+import LoadingSpinner from "@/components/Loading";
 import Sidebar from "@/components/Sidebar";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -31,7 +32,7 @@ export default function MainPagesLayout({ children }) {
   }, [router]);
 
   if (!user) {
-    return <p>Loading...</p>;
+    return <LoadingSpinner overlay/>;
   }
 
   return (
@@ -41,7 +42,7 @@ export default function MainPagesLayout({ children }) {
       <div className={`flex-1 flex flex-col ml-72`}>
         <Header />
 
-        <main className={`mt-16 flex-1 bg-white overflow-auto`}>
+        <main className={`mt-20 flex-1 bg-white overflow-auto`}>
           {children}
         </main>
       </div>

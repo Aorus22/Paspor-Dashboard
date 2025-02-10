@@ -31,13 +31,13 @@ export default function DashboardPage() {
                 rel="noopener noreferrer"
                 style={{
                   backgroundColor: item.bg,
-                  transitionDelay: `${delay}ms`,
                 }}
                 className={`
                   rounded-lg shadow w-80 p-4 py-10 text-white
                   cursor-pointer
                   hover:opacity-90
-                  transition-all duration-700 hover:duration-10
+                  ${showContent ? "delay-["+delay+"ms]" : "delay-0"}
+                  transition-all duration-700
                   opacity-0 scale-95 translate-y-2
                   ${showContent ? "opacity-100 scale-100 translate-y-0" : ""}
                 `}
@@ -55,7 +55,7 @@ export default function DashboardPage() {
 
   return (
     <div
-      className="min-h-[calc(100vh-64px)] bg-gray-100 flex flex-col justify-center items-center p-8"
+      className="min-h-[calc(100vh-80px)] bg-gray-100 flex flex-col justify-center items-center p-8"
       style={{
         backgroundImage: "url('/background.jpg')",
         backgroundSize: "cover",
