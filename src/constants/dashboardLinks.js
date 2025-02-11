@@ -29,6 +29,12 @@ import {
       icon: FaGlobe,
     },
     {
+      label: "M Paspor",
+      url: "https://play.google.com/store/apps/details?id=id.go.imigrasi.paspor_online&hl=id",
+      bg: "#445566",
+      icon: FaIdCard,
+    },
+    {
       label: "YouTube",
       url: "https://youtube.com/@kantorimigrasicilacap?si=OBD3wM8Z_6qagrqk",
       bg: "#732324",
@@ -67,6 +73,12 @@ import {
       bg: "#1c1970",
       icon: FaFacebook,
     },
+    {
+      label: "Instagram",
+      url: "https://www.instagram.com/imigrasi.cilacap?igsh=MWJkM3Y5c3U4eTlodQ==",
+      bg: "#ca014e",
+      icon: FaInstagram,
+    },
   ];
   
   export const column3Items = [
@@ -76,12 +88,12 @@ import {
     //   bg: "#123456",
     //   icon: FaEnvelope,
     // },
-    {
-      label: "Web Mail",
-      url: "mailto:kanim.cilacap@kemenkumham.go.id",
-      bg: "#654321",
-      icon: FaEnvelopeOpenText,
-    },
+    // {
+    //   label: "Web Mail",
+    //   url: "mailto:kanim.cilacap@kemenkumham.go.id",
+    //   bg: "#654321",
+    //   icon: FaEnvelopeOpenText,
+    // },
     // {
     //   label: "E Loker",
     //   url: "https://example.com/e-loker",
@@ -94,17 +106,5 @@ import {
     //   bg: "#332211",
     //   icon: FaArchive,
     // },
-    {
-      label: "M Paspor",
-      url: "https://play.google.com/store/apps/details?id=id.go.imigrasi.paspor_online&hl=id",
-      bg: "#445566",
-      icon: FaIdCard,
-    },
-    {
-      label: "Instagram",
-      url: "https://www.instagram.com/imigrasi.cilacap?igsh=MWJkM3Y5c3U4eTlodQ==",
-      bg: "#ca014e",
-      icon: FaInstagram,
-    },
   ];
   

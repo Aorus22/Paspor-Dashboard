@@ -142,13 +142,20 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {mainItems.map((item, idx) => {
             const IconComponent = item.icon;
-            const delay = idx * 75; 
-
-            if (item.type === "link") {
-              return (
-                <Link
-                  key={idx}
-                  href={item.href}
+            const delay = idx * 75;
+            const isLastRowSingle =
+              mainItems.length % 2 !== 0 && idx === mainItems.length - 1;
+        
+            const Container = item.type === "link" ? Link : "button";
+            const props =
+              item.type === "link"
+                ? { href: item.href }
+                : { onClick: item.onClick };
+        
+            return isLastRowSingle ? (
+              <div key={idx} className="md:col-span-2 flex justify-center">
+                <Container
+                  {...props}
                   className={`
                     font-semibold rounded-lg shadow w-80 p-4 py-10
                     cursor-pointer text-center text-white
@@ -164,41 +171,35 @@ export default function Home() {
                   }}
                 >
                   <div className="flex items-center justify-center gap-2">
-                    {IconComponent && (
-                      <IconComponent className="text-3xl shrink-0" />
-                    )}
+                    {IconComponent && <IconComponent className="text-3xl shrink-0" />}
                     <span>{item.label}</span>
                   </div>
-                </Link>
-              );
-            } else {
-              return (
-                <button
-                  key={idx}
-                  onClick={item.onClick}
-                  className={`
-                    font-semibold rounded-lg shadow w-80 p-4 py-10
-                    cursor-pointer text-center text-white
-                    hover:opacity-90 hover:duration-10
-                    transition-all duration-700
-                    ease-[cubic-bezier(0.4, 0, 0.2, 1)]
-                    opacity-0 scale-95 translate-y-2
-                    ${showContent ? "opacity-100 scale-100 translate-y-0" : ""}
-                  `}
-                  style={{
-                    backgroundColor: item.bg,
-                    transitionDelay: `${delay}ms`,
-                  }}
-                >
-                  <div className="flex items-center justify-center gap-2">
-                    {IconComponent && (
-                      <IconComponent className="text-3xl shrink-0" />
-                    )}
-                    <span>{item.label}</span>
-                  </div>
-                </button>
-              );
-            }
+                </Container>
+              </div>
+            ) : (
+              <Container
+                key={idx}
+                {...props}
+                className={`
+                  font-semibold rounded-lg shadow w-80 p-4 py-10
+                  cursor-pointer text-center text-white
+                  hover:opacity-90 hover:duration-10
+                  transition-all duration-700
+                  ease-[cubic-bezier(0.4, 0, 0.2, 1)]
+                  opacity-0 scale-95 translate-y-2
+                  ${showContent ? "opacity-100 scale-100 translate-y-0" : ""}
+                `}
+                style={{
+                  backgroundColor: item.bg,
+                  transitionDelay: `${delay}ms`,
+                }}
+              >
+                <div className="flex items-center justify-center gap-2">
+                  {IconComponent && <IconComponent className="text-3xl shrink-0" />}
+                  <span>{item.label}</span>
+                </div>
+              </Container>
+            );
           })}
         </div>
       )}

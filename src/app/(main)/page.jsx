@@ -63,13 +63,13 @@ export default function DashboardPage() {
         backgroundRepeat: "no-repeat",
       }}
     >
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {renderColumn(column1Items, 0)}
         {renderColumn(column2Items, column1Items.length)}
-        {renderColumn(
+        {/* {renderColumn(
           column3Items,
           column1Items.length + column2Items.length
-        )}
+        )} */}
       </div>
     </div>
   );
