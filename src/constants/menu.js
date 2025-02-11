@@ -187,6 +187,26 @@ const menu = [
     }
     return dataNames;
   }
+
+  function getDataNamePairs() {
+    const pairs = {};
+    
+    for (const section of menu) {
+      if (section.isi_section) {
+        for (const subSection of section.isi_section) {
+          if (subSection.has_child) {
+            for (const child of subSection.child_section) {
+              pairs[child.data_name] = `${subSection.jenis} ${child.judul}`;
+            }
+          } else {
+            pairs[subSection.data_name] = subSection.jenis;
+          }
+        }
+      }
+    }
+    
+    return pairs;
+  }
   
-  export { menu, getFullMenuName, getAllDataNames };
+  export { menu, getFullMenuName, getAllDataNames, getDataNamePairs };
   

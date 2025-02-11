@@ -36,13 +36,13 @@ export default function MainPagesLayout({ children }) {
   }
 
   return (
-    <div className="min-h-screen flex overflow-x-hidden">
+    <div className="min-h-screen flex overflow-x-hidden max-w-[100vw]">
       <Sidebar />
 
       <div className={`flex-1 flex flex-col ml-72`}>
         <Header />
 
-        <main className={`mt-20 flex-1 bg-white overflow-auto`}>
+        <main className={`mt-20 flex-1 bg-white overflow-hidden`}>
           {children}
         </main>
       </div>

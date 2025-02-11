@@ -43,7 +43,7 @@ const InputAndGraph = ({ data_name }) => {
   ];
 
   const [data, setData] = useState({});
-  const [selectedMonth, setSelectedMonth] = useState(months[0]);
+  const [selectedMonth, setSelectedMonth] = useState("");
   const [inputValue, setInputValue] = useState('');
 
   useEffect(() => {
@@ -88,6 +88,11 @@ const InputAndGraph = ({ data_name }) => {
 
   const handleUpdate = async () => {
     const numericValue = Number(inputValue);
+
+    if (!selectedMonth || !inputValue) {
+      toast.warning("Harap isi semua form");
+      return;
+    }
 
     if (!Number.isInteger(numericValue) || numericValue < 0) {
         toast.warning('Input Negatif Tidak Valid');
@@ -203,20 +208,22 @@ const InputAndGraph = ({ data_name }) => {
   }
 
   return (
-    <div className='p-10'>
+    <div className='p-10 min-h-[calc(100vh-80px)]'>
       {user.role === "ADMIN" && (
-        <div>
+        <>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-4">
             <div className="flex flex-col">
-              <label htmlFor="month" className="mb-2 font-medium">
+              {/* <label htmlFor="month" className="mb-2 font-medium">
                 Pilih Bulan:
-              </label>
+              </label> */}
               <select
                 id="month"
+                placeholder="Pilih Bulan"
                 value={selectedMonth}
                 onChange={handleMonthChange}
                 className="w-48 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
+              <option value="">Pilih Bulan</option>
                 {months.map((month) => (
                   <option key={month} value={month}>
                     {month}
@@ -226,9 +233,9 @@ const InputAndGraph = ({ data_name }) => {
             </div>
 
             <div className="flex flex-col">
-              <label htmlFor="passportCount" className="mb-2 font-medium">
+              {/* <label htmlFor="passportCount" className="mb-2 font-medium">
                 Total:
-              </label>
+              </label> */}
               <input
                 type="number"
                 id="passportCount"
@@ -245,16 +252,16 @@ const InputAndGraph = ({ data_name }) => {
           <div className="flex justify-center mb-4">
             <button
               onClick={handleUpdate}
-              className="px-4 py-2 bg-[#4a6283] text-white font-semibold rounded-md hover:bg-[#1f2937] transition-colors"
+              className="px-4 py-2 bg-gray-700 text-white font-semibold rounded-md hover:bg-[#1f2937] transition-colors"
             >
               Update
             </button>
           </div>
-        </div>
+        </>
       )}
 
-      <div className='flex justify-center'>
-        <div className="bg-white border border-opacity-50 border-[#4a6283] rounded-2xl p-4 h-96 w-[64em]">
+      <div className='flex justify-center min-h-[80%]'>
+        <div className="bg-white border border-opacity-50 border-[#4a6283] rounded-2xl p-4 min-h-[32rem] w-[85%] max-w-screen-2xl">
             <Bar data={chartData} options={options} />
         </div>
       </div>

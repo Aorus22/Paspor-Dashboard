@@ -6,7 +6,7 @@ import { useState, useEffect, useContext, useRef } from "react";
 import { UserContext } from "@/context/UserContext";
 import { menu } from "@/constants/menu";
 import NProgress from "nprogress";
-import { FaAddressBook, FaHome } from "react-icons/fa";
+import { FaAddressBook, FaHome, FaTable } from "react-icons/fa";
 
 const MenuItem = ({ item, isActive, openMenu, setOpenMenu }) => {
   const [contentHeight, setContentHeight] = useState(0);
@@ -142,17 +142,32 @@ const Sidebar = () => {
               </Link>
 
               <Link
-                href="/home"
+                href="/beranda"
                 onClick={()=> setOpenMenu(null)}
                 className={`block py-2 px-4 rounded-md transition-colors relative ${
-                  isActive("/home")
+                  isActive("/beranda")
                     ? "bg-gray-600 text-white border-l-4 border-[#788fff]"
                     : "text-gray-300 hover:bg-gray-500 hover:text-white"
                 }`}
               >
                 <div className="flex items-center gap-2">
                   <FaHome />
-                  <span>Home</span>
+                  <span>Beranda</span>
+                </div>
+              </Link>
+
+              <Link
+                href="/tabel"
+                onClick={()=> setOpenMenu(null)}
+                className={`block py-2 px-4 rounded-md transition-colors relative ${
+                  isActive("/tabel")
+                    ? "bg-gray-600 text-white border-l-4 border-[#788fff]"
+                    : "text-gray-300 hover:bg-gray-500 hover:text-white"
+                }`}
+              >
+                <div className="flex items-center gap-2">
+                  <FaTable />
+                  <span>Tabel Data</span>
                 </div>
               </Link>
             </div>
