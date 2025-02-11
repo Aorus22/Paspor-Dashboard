@@ -18,13 +18,13 @@ import {
   export const column1Items = [
     {
       label: "Status Kemigrasian",
-      url: "https://example.com/status-kemigrasian",
+      url: "https://evisa.imigrasi.go.id/",
       bg: "#129184",
       icon: FaUserShield,
     },
     {
       label: "Website",
-      url: "https://example.com",
+      url: "https://kanimcilacap.kemenkumham.go.id/",
       bg: "#6c2373",
       icon: FaGlobe,
     },
@@ -78,7 +78,7 @@ import {
     // },
     {
       label: "Web Mail",
-      url: "https://example.com/web-mail",
+      url: "mailto:kanim.cilacap@kemenkumham.go.id",
       bg: "#654321",
       icon: FaEnvelopeOpenText,
     },
@@ -96,7 +96,7 @@ import {
     // },
     {
       label: "M Paspor",
-      url: "https://example.com/m-paspor",
+      url: "https://play.google.com/store/apps/details?id=id.go.imigrasi.paspor_online&hl=id",
       bg: "#445566",
       icon: FaIdCard,
     },
